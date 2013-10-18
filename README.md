@@ -1,7 +1,7 @@
 brevity.js
 ==========
 
-**brevity.js** is a javascript plugin for wrapping registered abbreviations in `<abbr>` tags.  This automates the repetetive task of supplying `<abbr>` tags
+**brevity.js** is a javascript plugin for wrapping registered abbreviations in `abbr` tags.  This automates the repetitive task of supplying `abbr` tags
 for accessibility.  Abbreviations are registered on initialization and are completely customizable.
 
 
@@ -10,7 +10,7 @@ Usage
 
 Once you have included the javascript in your page, you can initialize the plugin by calling the *brevity()* function.  The function takes a single argument:
 
-<table summary="Function arguments for brevity.js constructor funciton">
+<table summary="Function arguments for brevity.js constructor function">
 	<thead>
 		<tr>
 			<th scope="col">Argument</th>
@@ -47,12 +47,12 @@ Abbreviation array
 		<tr>
 			<td>abbr</td>
 			<td>string</td>
-			<td>The abbreviation string the plugin will search for and will wrap in `<abbr>` tags</td>
+			<td>The abbreviation string the plugin will search for and will wrap in `abbr` tags</td>
 		</tr>
 		<tr>
 			<td>title</td>
 			<td>string</td>
-			<td>The expanded text for the abbreviation that will be used in the *title* attribute of the `<abbr>` tag</td>
+			<td>The expanded text for the abbreviation that will be used in the *title* attribute of the `abbr` tag</td>
 		</tr>
 	</tbody>
 </table>
@@ -62,15 +62,6 @@ Abbreviation array
 Sample code
 ===========
 
-**HTML** 
-	<ul>
-		<li>DOM</li>
-		<li>HTML</li>
-	</ul>
-
-
-**Javascript**
-
 	// Create the abbreviations array
 	var abbrs = [
 		{ abbr: 'DOM', title: 'Document Object Model' },
@@ -79,11 +70,3 @@ Sample code
 
 	// Initialize the plugin
 	brevity(abbrs);
-
-
-**Result**
-	<ul>
-		<li><abbr title="Document Object Model">DOM</abbr></li>
-		<li><abbr title="Hypertext Markup Language">HTML</abbr></li>
-	</ul>
-
