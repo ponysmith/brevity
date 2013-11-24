@@ -1,7 +1,13 @@
+/** 
+ * brevity.js
+ * JS plugin for automatically wrapping abbreviations in <abbr> tags
+ * @author Pony Smith - pony@ponysmith.com
+ */
+
 var brevity = function(abbrs) {
 
-	function abbreviate(node) {
-		// Check node type
+    function abbreviate(node) {
+        // Check node type
         switch(node.nodeType) {
             // Element node
             case 1:
@@ -25,7 +31,8 @@ var brevity = function(abbrs) {
                         // Create the abbr element for inserting into the DOM
                         elem = document.createElement('abbr');
                         elem.setAttribute('title', a.title);
-                        elem.innerHTML = a.abbr;
+                        // Set the abbr text after removing any namespacing
+                        elem.innerHTML = a.abbr.substr(a.abbr.lastIndexOf(':')+1);
                         // Split the text on each side of the matched abbr to isolate it into its own node
                         var n = node.splitText(match.index);
                         n.splitText(match[0].length);
@@ -38,7 +45,7 @@ var brevity = function(abbrs) {
     }
 
     // Set the root node and call the abbreviate function
-	root = document.getElementsByTagName('body')[0];
-	abbreviate(root);
+    root = document.getElementsByTagName('body')[0];
+    abbreviate(root);
 
 }
