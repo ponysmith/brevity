@@ -5,8 +5,9 @@ brevity.js
 for accessibility.  Abbreviations are registered on initialization and are completely customizable.
 
 
+
 Usage
-=====
+-----
 
 Once you have included the javascript in your page, you can initialize the plugin by calling the *brevity()* function.  The function takes a single argument:
 
@@ -28,6 +29,21 @@ Once you have included the javascript in your page, you can initialize the plugi
 		</tr>
 	</tbody>
 </table>
+
+
+
+Sample code
+-----------
+
+	// Create the abbreviations array
+	var abbrs = [
+		{ abbr: 'DOM', title: 'Document Object Model' },
+		{ abbr: 'HTML', title: 'Hypertext Markup Language' }
+	]
+
+	// Initialize the plugin
+	brevity(abbrs);
+
 
 
 Abbreviation array
@@ -59,14 +75,24 @@ Abbreviation array
 
 
 
-Sample code
-===========
+Namespaced abbreviations
+------------------------
 
-	// Create the abbreviations array
+For the occassion when one abbreviation can have multiple meanings, namespacing has been enabled to allow you to register multiple different meanings for a single abbreviation.
+To namespace abbreviations, simply use a colon to add a namespace before the abbreviation.  For example, you could register two abbreviations for WWF as follows:
+
+	// Using namespacing
 	var abbrs = [
-		{ abbr: 'DOM', title: 'Document Object Model' },
-		{ abbr: 'HTML', title: 'Hypertext Markup Language' }
+		{ abbr: 'Wrestle:WWF', title: 'World Wrestling Federation' },
+		{ abbr: 'Pandas:WWF', title: 'World Wildlife Fund' }
 	]
+	
+When using a namespace, everything to the left of the last colon (:) will be used simply for disambiguation purposes.  
+Everything to the right of the final colon will be used for the abbreviation text.  So, using the example above would turn:
 
-	// Initialize the plugin
-	brevity(abbrs);
+	The Wrestle:WWF is holdling a fundraiser to benefit the Panda:WWF.
+	
+into:
+
+	The <abbr title="World Wrestling Federation">WWF</abbr> is holding a fundraiser to benefit the <abbr title="World Wildlife Fund">WWF</abbr>.
+
