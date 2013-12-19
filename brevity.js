@@ -4,7 +4,17 @@
  * @author Pony Smith - pony@ponysmith.com
  */
 
-var brevity = function(abbrs) {
+
+/**
+ * brevity function
+ * @param (array) abbrs: array of abbreviation definition objects
+ * @param (object) options: options for the plugin
+ */
+var brevity = function(abbrs, options) {
+
+    var _options = {
+        root: document.getElementsByTagName('body')[0]
+    }
 
     function abbreviate(node) {
         // Check node type
@@ -44,8 +54,11 @@ var brevity = function(abbrs) {
         }
     }
 
+    // Overwrite default options with user options
+    for(o in options) {
+        if(_options[o] != null) _options[o] = options[o];
+    }
     // Set the root node and call the abbreviate function
-    root = document.getElementsByTagName('body')[0];
-    abbreviate(root);
+    abbreviate(_options.root);
 
 }
