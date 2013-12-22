@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+<head>
+    <title>brevity.js</title>
+    <style type="text/css" rel="stylesheet">
+    body { margin: 0; background-color: #fff; font: normal 12px/18px "Trebuchet MS", sans-serif; }
+    h1 { font-size: 24px; color: #333; line-height: 18px; font-weight: normal; margin: 0 0 16px; border-bottom: 2px solid #999; padding: 0 0 5px; }
+    h1 .sub { font-size: 16px; text-transform: uppercase; color: #666; }
+    h2 { margin: 50px 0 12px; color: #999; text-transform: uppercase; }
+    #nav { padding: 0; background-color: #333; margin: 0 0 40px; }
+    #nav > li { list-style: none; display: inline-block; }
+    #nav > li > a { display: block; padding: 10px 15px; color: #ddd; text-decoration: none; }
+    #nav > li > a:hover, #nav > li > a.active { display: block; color: #999; text-decoration: none; background-color: #000; color: #999; }
+    #content { padding: 20px; max-width: 960px; margin: 0 auto; }
+    #result { background-color: #d3faff; border: 1px solid #547da0; color: #547da0; padding: 10px 15px; }
+    abbr, .abbrsample { background-color: #369; color: #fff; padding: 2px 4px; cursor: help; }
+    pre { background-color: #eee; margin: 24px 0; padding: 10px; border: 1px solid #bbb; font: 11px/16px monospace; }
+    code { background-color: #eee; padding: 2px 3px; border: 1px solid #bbb; font: 11px/16px monospace; }
+    </style>
+</head>
+
+
+
+<body>  
+
+<ul id="nav">
+    <li><a href="index.html" class="active">Basic Example</a></li>
+    <li><a href="namespace.html">Example with namespacing</a></li>
+    <li><a href="rootnode.html">Example with root node</a></li>
+</ul>
+
+
+<div id="content">
+    <h1>brevity.js &rsaquo; <span class="sub">basic usage</span></h1>
+
+    <p>
+        This example covers the most basic usage of brevity.js. The process is actually very simple
+    </p>
+    <ol>
+        <li>Type your abbreviations in your HTML document just as you normally would</li>
+        <li>For each abbreviation you want brevity.js to convert into an <code>abbr</code> tag,
+            simply register the abbreviation and expanded text for it in the abbreviations array
+        </li>
+        <li>Pass the abbreviations array into the <code>brevity()</code> function and watch the magic happen</li>
+    </ol>
+
+    <p>
+        To see it in action, check out the code below.  For simplicity, <code>abbr</code> tags have been styled with blue backgrounds, like <span class="abbrsample">this</span>.  Hover over an <code>abbr</code> tag to see the expanded text.
+    </p>
+
+    <h2>Code</h2>
+
+<pre>
+&lt!-- sample HTML --&gt
+&lt;p&gt;HTML and CSS are two core technologies for web development.&lt;/p&gt;
+&lt;p&gt;Notice that brevity.js is case sensitive, so this html isn't converted to an abbr tag.&lt;/p&gt;
+</pre>
+
+<pre>
+// sample JS
+var abbrs = [
+    { abbr: 'HTML', title: 'Hypertext Markup Language' },
+    { abbr: 'CSS', title: 'Cascading Style Sheets' },
+];
+brevity(abbrs);
+</pre>
+
+        <h2>Result</h2>
+        <!-- sample HTML -->
+        <div id="result">
+            <p>HTML and CSS are two core technologies for web development.</p>
+            <p>Notice that brevity.js is case sensitive, so this html isn't converted to an abbr tag.</p>
+        </div>
+
+</div>
+
+<script src="../brevity.min.js"></script>
+<script>
+    var abbrs = [
+        { abbr: 'HTML', title: 'Hypertext Markup Language' },
+        { abbr: 'CSS', title: 'Cascading Style Sheets' },
+    ];
+    // I know, I know ... this doesn't match the JS in the example code above
+    // I'm adding the root option here so that only the result html is converted
+    // Otherwise, all the abbreviations in the sample code would be converted as well, and that would just be weird
+    var opts = { 'root': document.getElementById('result') };
+    brevity(abbrs, opts);
+</script>
+
+</body>
+</html>

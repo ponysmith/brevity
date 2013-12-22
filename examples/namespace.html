@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+<head>
+    <title>brevity.js</title>
+    <style type="text/css" rel="stylesheet">
+    body { margin: 0; background-color: #fff; font: normal 12px/18px "Trebuchet MS", sans-serif; }
+    h1 { font-size: 24px; color: #333; line-height: 18px; font-weight: normal; margin: 0 0 16px; border-bottom: 2px solid #999; padding: 0 0 5px; }
+    h1 .sub { font-size: 16px; text-transform: uppercase; color: #666; }
+    h2 { margin: 50px 0 12px; color: #999; text-transform: uppercase; }
+    #nav { padding: 0; background-color: #333; margin: 0 0 40px; }
+    #nav > li { list-style: none; display: inline-block; }
+    #nav > li > a { display: block; padding: 10px 15px; color: #ddd; text-decoration: none; }
+    #nav > li > a:hover, #nav > li > a.active { display: block; color: #999; text-decoration: none; background-color: #000; color: #999; }
+    #content { padding: 20px; max-width: 960px; margin: 0 auto; }
+    #result { background-color: #d3faff; border: 1px solid #547da0; color: #547da0; padding: 10px 15px; }
+    abbr, .abbrsample { background-color: #369; color: #fff; padding: 2px 4px; cursor: help; }
+    pre { background-color: #eee; margin: 24px 0; padding: 10px; border: 1px solid #bbb; font: 11px/16px monospace; }
+    code { background-color: #eee; padding: 2px 3px; border: 1px solid #bbb; font: 11px/16px monospace; }
+    </style>
+</head>
+
+
+
+<body>  
+
+<ul id="nav">
+    <li><a href="index.html">Basic Example</a></li>
+    <li><a href="namespace.html" class="active">Example with namespacing</a></li>
+    <li><a href="rootnode.html">Example with root node</a></li>
+</ul>
+
+
+<div id="content">
+    <h1>brevity.js &rsaquo; <span class="sub">namespacing</span></h1>
+
+    <p>
+        Namespacing in brevity.js allows you to register multiple abbreviations with the 
+        same abbreviation text.  This can come in handy on the off chance you have
+        two identical abbreviations that have different meanings.
+    </p>
+
+    <p>  
+        Namespaces in brevity.js work by using a colon (<code>:</code>) to add a namespace before the actual abbreviation.  
+        When brevity.js parses the abbreviation, everything to the left of the final colon will be considered a namespace and will
+        be used for disambiguation purposes only.  Everything to the right of the final colon is what will be printed out by brevity.js
+        as the text for that <code>abbr</code> tag.
+    </p>
+    <p>
+        For example, let's say you were using the abbrevation WWF for two purposes:
+    </p>
+    <ol>
+        <li>World Wrestling Federation</li>
+        <li>World Wildlife Fund</li>
+    </ol>
+    <p>
+        In this case, you could namespace these abbrevations in the abbrevations array of your JS like so:
+    </p>
+<pre>
+var abbrs = [
+    { abbr: 'Pandas:WWF', title: 'World Wildlife Fund' },
+    { abbr: 'HulkHogan:WWF', title: 'World Wrestling Federation' }
+];
+</pre>
+
+    <p>
+        Then, in your HTML, you would simply type out the appropriate abbreviation (with namespace) and brevity.js will correctly
+        convert it.  Check out the sample code below to see it in action.
+    </p>
+
+
+
+    <h2>Code</h2>
+
+<pre>
+&lt!-- sample HTML --&gt
+&lt;p&gt;Due to his love of pandas, Hulk Hogan (of HulkHogan:WWF fame) held a fundraiser for the Pandas:WWF.&lt;/p&gt;
+</pre>
+
+<pre>
+// sample JS
+var abbrs = [
+    { abbr: 'Pandas:WWF', title: 'World Wildlife Fund' },
+    { abbr: 'HulkHogan:WWF', title: 'World Wrestling Federation' }
+];
+brevity(abbrs);
+</pre>
+
+        <h2>Result</h2>
+        <!-- sample HTML -->
+        <div id="result">
+        <p>Due to his love of pandas, Hulk Hogan (of HulkHogan:WWF fame) held a fundraiser for the Pandas:WWF.</p>
+        </div>
+
+
+        <h2>Another use for namespacing</h2>
+
+        <p>
+            Another potential use for the namespacing capabilities of brevity.js is to have more control over when 
+            abbreviations get parsed.  For example, let's say you want brevity.js to handle the term HTML, but you
+            only want it to be abbreviated the first time it appears on the page.  You might be able to use the
+            <a href="rootnode.html">root node option</a> to accomplish this.  But you could also use namespacing. All
+            you would need to do is add a namespace (for example, <code>convert</code>).  Then,
+            any time you want brevity to handle the abbreviation, you would type <code>convert:HTML</code> and anytime
+            you want the text to appear unchanged, you would simply type <code>HTML</code>.  Easy peesy.
+        </p>
+
+
+</div>
+
+
+
+<script src="../brevity.min.js"></script>
+<script>
+    var abbrs = [
+        { abbr: 'Pandas:WWF', title: 'World Wildlife Fund' },
+        { abbr: 'HulkHogan:WWF', title: 'World Wrestling Federation' }
+    ];
+    // I know, I know ... this doesn't match the JS in the example code above
+    // I'm adding the root option here so that only the result html is converted
+    // Otherwise, all the abbreviations in the sample code would be converted as well, and that would just be weird
+    var opts = { 'root': document.getElementById('result') };
+    brevity(abbrs, opts);
+</script>
+
+</body>
+</html>
