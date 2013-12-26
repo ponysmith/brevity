@@ -37,7 +37,31 @@ The abbreviation array defines  all abbreviations you want registered with the p
 
 
 
-### Namespaced abbreviations ###
+### The options object ###
+
+As a second, optional, parameter **brevity.js** takes an options object.  The following options can be set:
+
+<table summary="Required properties in abbreviation objects for brevity.js">
+	<thead>
+		<tr>
+			<th scope="col">Property</th>
+			<th scope="col">Type</th>
+			<th scope="col">Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>root</td>
+			<td>DOM Node</td>
+			<td>The root node from which to begin parsing for abbreviations.  Only nodes within the root node will be converted to `abbr` tags</td>
+		</tr>
+	</tbody>
+</table>
+
+
+
+
+## Namespaced abbreviations ##
 
 For the occassion when one abbreviation can have multiple meanings, namespacing has been enabled to allow you to register multiple different meanings for a single abbreviation.
 To namespace abbreviations, simply use a colon to add a namespace before the abbreviation.  For example, you could register two abbreviations for WWF as follows:
@@ -60,7 +84,7 @@ into:
 
 
 
-## Sample code ## 
+### Sample code ###
 
 	// Create the abbreviations array
 	var abbrs = [
