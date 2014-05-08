@@ -15,7 +15,7 @@
     } else {
         root.brevity = factory();
     }
-}(this, function ($) {
+}(this, function () {
 
     /**
      * brevity function
