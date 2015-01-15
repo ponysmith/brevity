@@ -5,6 +5,8 @@ brevity.js
 for accessibility.  Abbreviations are registered on initialization and are completely customizable.
 
 
+For complete documentation and examples, visit http://ponysmith.github.io/brevity
+
 
 ## Usage ##
 
