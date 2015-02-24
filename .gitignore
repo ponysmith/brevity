@@ -1,4 +1,4 @@
-tests/
+bower_components/
 node_modules/
 npm-debug.log
 tmp

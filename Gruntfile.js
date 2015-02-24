@@ -9,10 +9,22 @@ module.exports = function(grunt) {
                 }
             }
         },
+        jasmine: {
+            brevity: {
+                src: 'js/brevity.js',
+                options: {
+                    specs: 'specs/*_spec.js',
+                    vendor: [
+                        'bower_components/jquery/dist/jquery.js',
+                        'bower_components/jasmine-jquery/lib/jasmine-jquery.js'
+                    ],                
+                }
+            }
+        }
     });
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
-
-    grunt.registerTask('default', ['uglify']);
-
+    grunt.loadNpmTasks('grunt-contrib-jasmine');
+    
+    grunt.registerTask('default', ['uglify','jasmine']);
 }

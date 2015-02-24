@@ -1,17 +1,19 @@
+jasmine.getFixtures().fixturesPath = 'specs/fixtures';
+
 describe("Brevity", function() {
 
-    // Instantiate brevity
-    beforeAll(function() {
+    // Set up
+    beforeEach(function() {
+        loadFixtures('basic.html');  
         var abbrs = [
             { abbr: 'HTML', title: 'Hypertext Markup Language' },
             { abbr: 'CSS', title: 'Cascading Style Sheets' },
             { abbr: 'pandas:WWF', title: 'World Wildlife Fund' },
-            { abbr: 'wrestling:WWF', title: 'World Wrestling Federation' },
+            { abbr: 'wrestling:WWF', title: 'World Wrestling Federation' }
         ];
         brevity(abbrs, { root: document.getElementById('root') });
     });
 
-    // Check for registered abbreviations
     it('should handle registered abbreviations', function() {
         expect($('#html')).toContainElement('abbr');
     });
@@ -48,6 +50,5 @@ describe("Brevity", function() {
     it('should not convert abbreviations outside the root node', function() {
         expect($('#html-nonroot')).not.toContainElement('abbr');
     });
-
 
 });
