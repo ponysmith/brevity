@@ -5,7 +5,7 @@
     "url": "git://github.com/ponysmith/brevity.git"
   },
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha \"./mocha/tests/**/*.js\" --reporter spec"
+    "test": "karma start --single-run"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
