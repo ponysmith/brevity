@@ -1,7 +1,7 @@
 brevity.js
 ==========
 
-![CircleCI](https://circleci.com/gh/ponysmith/brevity/tree/master.svg?style=svg&circle-token=df65b6034cac75bf94e2bc842a1d13f955f0860f)
+[![CircleCI](https://circleci.com/gh/ponysmith/brevity.svg?style=svg)](https://circleci.com/gh/ponysmith/brevity)
 
 **brevity.js** is a javascript plugin for wrapping registered abbreviations in `abbr` tags.  This automates the repetitive task of supplying `abbr` tags
 for accessibility.  Abbreviations are registered on initialization and are completely customizable.
