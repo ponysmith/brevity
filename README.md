@@ -6,9 +6,19 @@ brevity.js
 **brevity.js** is a javascript plugin for wrapping registered abbreviations in `abbr` tags.  This automates the repetitive task of supplying `abbr` tags
 for accessibility.  Abbreviations are registered on initialization and are completely customizable.
 
+## Installation
+**brevity.js** has been created as an ES module. You can `import` it as you would any other ES module in your build pipeline (Webpack, Gulp, etc).
 
-For complete documentation and examples, visit http://ponysmith.github.io/brevity
-
+Or import it as a module directly in the browser:
+```
+<script type="module">
+  import brevity from './js/brevity.js';
+  let abbrs = [
+    { abbr: 'HTML', title: 'Hypertext Markup Language' }
+  ];
+  brevity(abbrs);
+</script>
+```
 
 ## Usage ##
 
